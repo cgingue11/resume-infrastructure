@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curtis Gingue - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            width: 100%;
+            background: #1a202c;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #2d3748;
+        }
+
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .resume-content {
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        h2 {
+            color: #e2e8f0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: #f7fafc;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            color: #cbd5e0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-info {
+            text-align: center;
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            padding: 2rem;
+            margin: -40px -40px 2rem -40px;
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .contact-info h1 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #cbd5e0;
+            font-weight: 500;
+        }
+
+        .contact-item a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #667eea;
+        }
+
+        .contact-item::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+        }
+
+        ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #cbd5e0;
+        }
+
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .experience-item, .education-item, .project-item {
+            background: linear-gradient(135deg, #2d3748, #374151);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid transparent;
+            background-image: linear-gradient(135deg, #2d3748, #374151), linear-gradient(135deg, #667eea, #764ba2);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            transition: all 0.3s ease;
+            border: 1px solid #4a5568;
+        }
+
+        .experience-item:hover, .education-item:hover, .project-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.25);
+            background: linear-gradient(135deg, #374151, #4a5568);
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .summary-text {
+            font-size: 1.1rem;
+            color: #cbd5e0;
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            border-radius: 12px;
+            border: 1px solid #4a5568;
+            line-height: 1.7;
+        }
+
+        .job-details {
+            color: #a0aec0;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #2d3748, #374151);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #4a5568;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #4a5568;
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .resume-content {
+                padding: 20px;
+            }
+            
+            .contact-info {
+                margin: -20px -20px 2rem -20px;
+                padding: 1.5rem;
+            }
+            
+            .contact-details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                color: #2d3748;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+                background: white;
+                border: none;
+            }
+            
+            .resume-container::before {
+                display: none;
+            }
+
+            .contact-info {
+                background: #f7fafc !important;
+                color: #2d3748;
+            }
+
+            .experience-item, .education-item, .project-item, .skill-category {
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0;
+                color: #2d3748;
+            }
+
+            .summary-text {
+                background: #f7fafc !important;
+                border: 1px solid #e2e8f0;
+                color: #2d3748;
+            }
+
+            h1, h2, h3, h4 {
+                color: #2d3748 !important;
+            }
+
+            .contact-item a {
+                color: #2d3748;
+            }
+
+            li {
+                color: #2d3748;
+            }
+
+            .skill-tag {
+                background: #e2e8f0 !important;
+                color: #2d3748 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="resume-content">
+            <!-- Contact Information -->
+            <section class="contact-info">
+                <h1>Curtis Gingue</h1>
+                <div style="margin-bottom: 1.5rem;">
+                    <div style="color: #cbd5e0; font-weight: 500; margin-bottom: 0.25rem;">(802) 473-6589</div>
+                    <div style="color: #cbd5e0; font-weight: 500; margin-bottom: 0.25rem;"><a href="mailto:cgingue@protonmail.com" style="color: #cbd5e0; text-decoration: none;">cgingue@protonmail.com</a></div>
+                    <div style="color: #cbd5e0; font-weight: 500;">5802 Buck Creek Road</div>
+                    <div style="color: #cbd5e0; font-weight: 500;">Finchville, KY 40022</div>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-item"><a href="https://github.com/cgingue11" target="_blank">GitHub</a></div>
+                    <div class="contact-item"><a href="https://linkedin.com/in/curtis-gingue-364bb4171/" target="_blank">LinkedIn</a></div>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section>
+                <h2>Professional Summary</h2>
+                <p class="summary-text">Cloud Security Engineer and DevOps Specialist with 4+ years of experience in Linux system administration, Kubernetes orchestration, and enterprise infrastructure management. Proven expertise in CI/CD pipelines, security compliance (SOC), disaster recovery planning, and site reliability engineering. Skilled in cloud architecture design, infrastructure as code, API development, and incident response with a track record of maintaining SLA compliance.</p>
+            </section>
+
+            <!-- Experience -->
+            <section>
+                <h2>Professional Experience</h2>
+                <div class="experience-item">
+                    <h3>Cloud Security & Support Specialist</h3>
+                    <p class="job-details">3D Cloud | Kentucky | April 2021 - Present</p>
+                    <ul>
+                        <li><strong>Lead Tier 1-3 technical support operations</strong>, maintaining SLA compliance and optimizing incident escalation workflows</li>
+                        <li><strong>Design and deploy GCP Load Balancers</strong> with advanced traffic routing for A\B and highly available cloud architecture</li>
+                        <li><strong>Implement zero-trust security frameworks</strong> with identity governance, least-privilege access controls, and SOC compliance auditing</li>
+                        <li><strong>Automate infrastructure deployment</strong> using Infrastructure as Code principles, CI/CD pipelines, and DevOps best practices</li>
+                        <li><strong>Orchestrate production Kubernetes workloads</strong> including batch processing, scheduled jobs, and microservices architecture</li>
+                        <li><strong>Develop and maintain RESTful APIs</strong> with comprehensive testing suites, performance optimization, and integration workflows</li>
+                        <li><strong>Manage HAProxy configurations</strong> for SSL termination and load balancing across hybrid cloud and on-premises environments</li>
+                        <li><strong>Administer SQL databases</strong> with user provisioning, query optimization, and automated backup strategies</li>
+                        <li><strong>Deploy monitoring solutions</strong> using Datadog with custom alerting, webhook integrations, and automated incident response</li>
+                        <li><strong>Engineer serverless applications</strong> on Google Cloud Platform optimized for cost efficiency and scalability</li>
+                        <li><strong>Architect disaster recovery and business continuity solutions</strong> including air-gapped DR deployments for cloud storage data protection and cross-platform disaster recovery scenarios</li>
+                        <li><strong>Maintain Linux production systems</strong> across virtualized and containerized environments</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section>
+                <h2>Education & Certifications</h2>
+                <div class="education-item">
+                    <h3>Cybersecurity Studies</h3>
+                    <p class="job-details">Norwich University | Northfield, VT</p>
+                    <p><em>Coursework: Network Security, Digital Forensics, Risk Management, Cryptography</em></p>
+                </div>
+
+                <div class="education-item">
+                    <h3>High School Diploma</h3>
+                    <p class="job-details">St. Johnsbury Academy | St. Johnsbury, VT</p>
+                    <p><em>Advanced Placement: Computer Science, Physics</em></p>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section>
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Cloud & Infrastructure</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Google Cloud Platform</span>
+                            <span class="skill-tag">Serverless Architecture</span>
+                            <span class="skill-tag">Virtualization</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Docker Compose</span>
+                            <span class="skill-tag">Proxmox</span>
+                            <span class="skill-tag">NixOS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>DevOps & Automation</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">CI/CD Pipelines</span>
+                            <span class="skill-tag">Infrastructure as Code</span>
+                            <span class="skill-tag">Bash Scripting</span>
+                            <span class="skill-tag">Datadog and Cloud Monitoring</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Programming & Development</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">RESTful APIs</span>
+                            <span class="skill-tag">SQL Administration</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Security & Compliance</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SOC Compliance</span>
+                            <span class="skill-tag">Zero-Trust Architecture</span>
+                            <span class="skill-tag">Identity Management</span>
+                            <span class="skill-tag">SSL/TLS Certificate Lifecycle Management with LetsEncrypt</span>
+                            <span class="skill-tag">Security Auditing</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Business Continuity & Disaster Recovery</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Air-Gapped DR Deployments</span>
+                            <span class="skill-tag">Linux System Recovery</span>
+                            <span class="skill-tag">Cloud Data Protection</span>
+                            <span class="skill-tag">Business Continuity Planning</span>
+                            <span class="skill-tag">Cross-Platform Recovery</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Networking & Systems</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Linux Administration</span>
+                            <span class="skill-tag">HAProxy Load Balancing</span>
+                            <span class="skill-tag">DNS Management</span>
+                            <span class="skill-tag">OPNSense and Fortigate Firewalls</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Testing & Quality Assurance</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Postman API Testing</span>
+                            <span class="skill-tag">Test Automation</span>
+                            <span class="skill-tag">Performance Testing</span>
+                            <span class="skill-tag">Integration Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Project Showcase -->
+            <section>
+                <div style="background: linear-gradient(135deg, #2d3748, #374151); padding: 1.5rem; border-radius: 12px; border: 1px solid #4a5568; text-align: center;">
+                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">🚀 Technical Showcase</h3>
+                    <p style="color: #cbd5e0; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.6;">
+                        This resume demonstrates practical DevOps implementation - served from a <strong>Kubernetes cluster</strong> in my home lab using <strong>Pangolin tunnels</strong> to leverage <strong>Layer 7 networking</strong> to bypass CGNAT limitations. Infrastructure managed entirely as code.
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://github.com/cgingue11/resume-infrastructure" 
+                           target="_blank" 
+                           style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500; transition: transform 0.3s ease;"
+                           onmouseover="this.style.transform='translateY(-2px) scale(1.05)'"
+                           onmouseout="this.style.transform='translateY(0) scale(1)'">
+                            📁 View Infrastructure Code
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
